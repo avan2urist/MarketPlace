@@ -14,10 +14,8 @@ class ProductList extends StatelessWidget {
         title: const Text('ProductList'),
         centerTitle: true,
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(12.0),
-        child: LadaCarsGrid(),
-      ),
+      body: const LadaCarsGrid(),
+      
 
       );
     
