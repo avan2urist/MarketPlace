@@ -1,56 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:social_network/product_list/info_lada/lada_car_info.dart';
 
-class CardScreen extends StatelessWidget {
-  final String name;
-  final List<String> imageUrl;
+class CardScreen extends StatefulWidget {
+  final LadaCar car;
 
-  const CardScreen({super.key, required this.name, required this.imageUrl});
+  const CardScreen({super.key, required this.car});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _CardScreenState createState() => _CardScreenState();
+}
+
+class _CardScreenState extends State<CardScreen> {
+  int currentPage = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(name),
+        title: Text(widget.car.name),
+        centerTitle: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            child: PageView.builder(
-              itemCount: ladaCars.length,
-              itemBuilder: (context, index) {
-                LadaCar car = ladaCars[index];
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(car.name),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      height: 200,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: car.imageUrl.length,
-                        itemBuilder: (context, idx) {
-                          return Image.network(car.imageUrl[idx]);
-                        },
-                      ),
+          SizedBox(
+            height: 300, // Вы можете установить желаемую высоту изображения
+            child: Stack(
+              children: [
+                PageView.builder(
+                  itemCount: widget.car.imageUrl.length,
+                  onPageChanged: (int page) {
+                    setState(() {
+                      currentPage = page + 1;
+                    });
+                  },
+                  itemBuilder: (context, idx) {
+                    return Image.network(
+                      widget.car.imageUrl[idx],
+                      fit: BoxFit
+                          .fitWidth, // Растягиваем изображение на всю ширину
+                    );
+                  },
+                ),
+                Positioned(
+                  bottom: 10,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      '$currentPage/${widget.car.imageUrl.length}',
+                      style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 10),
-                    Text('Price: ${car.price}'),
-                  ],
-                );
-              },
+                  ),
+                ),
+              ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name,
+                Text(widget.car.name,
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 10),
+                Text('Price: ${widget.car.price}'),
               ],
             ),
           ),
