@@ -1,16 +1,13 @@
-# social_network
+# reg and auth window
+![image](https://github.com/avan2urist/MarketPlace/assets/156675394/44982973-7099-489e-b24d-91f372875149)
+![image](https://github.com/avan2urist/MarketPlace/assets/156675394/491c4a61-ed36-400e-9350-69834a361d07)
 
-A new Flutter project.
+## list product 
 
-## Getting Started
+![image](https://github.com/avan2urist/MarketPlace/assets/156675394/696cfb75-7b33-409e-8117-1eb9dc33ad34)
 
-This project is a starting point for a Flutter application.
+### card product
 
-A few resources to get you started if this is your first Flutter project:
+![image](https://github.com/avan2urist/MarketPlace/assets/156675394/8513da34-94f3-4002-808d-4ce14485cf4b)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
