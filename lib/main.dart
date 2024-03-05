@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: '/',
       routes: {
-        '/':(context) => const RegistrationScreen(),
+        '/':(context) => const LoginSignUpScreen(),
         '/to_product_list':(context) => const ProductList(),
       },
     );

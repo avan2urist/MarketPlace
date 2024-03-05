@@ -10,6 +10,11 @@ class ProductList extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsApplication.scaffoldColor,
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){
+
+          }, icon: const Icon(Icons.shopping_cart),)
+        ],
         backgroundColor: ColorsApplication.appBarColor,
         title: const Text('ProductList'),
         centerTitle: true,
