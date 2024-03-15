@@ -2,8 +2,9 @@ class LadaCar {
   final String name;
   final List<String> imageUrl;
   final String price;
+  final String videoUrl;
 
-  LadaCar({required this.name, required this.imageUrl, required this.price});
+  LadaCar({required this.name, required this.imageUrl, required this.price, required this.videoUrl});
 }
 
 List<LadaCar> ladaCars = [
@@ -16,6 +17,7 @@ List<LadaCar> ladaCars = [
       'https://avatars.mds.yandex.net/get-autoru-vos/6024412/e8db7a2c6da4cdf20089bbc3e99e5af7/1200x900n',
     ],
     price: '1.290.000',
+    videoUrl: 'https://www.youtube.com/watch?v=k2_tujIS7lw',
   ),
   LadaCar(
     name: 'Niva Travel',
@@ -25,6 +27,7 @@ List<LadaCar> ladaCars = [
       'https://avatars.mds.yandex.net/get-autoru-vos/11373141/b3530185d48fd1de1e26d47a6f67bcb5/1200x900n',
     ],
     price: '907.500',
+    videoUrl: 'https://www.youtube.com/watch?v=R2OKBzQsf0c',
   ),
   LadaCar(
     name: 'Lada Granta',
@@ -39,6 +42,7 @@ List<LadaCar> ladaCars = [
 
     ],
     price: '749.000',
+    videoUrl: 'https://www.youtube.com/watch?v=dZPytDhp0ss',
   ),
   LadaCar(
     name: 'Lada Vesta',
@@ -54,6 +58,7 @@ List<LadaCar> ladaCars = [
 
     ],
     price: '1.089.000',
+    videoUrl: 'https://www.youtube.com/watch?v=d1RuAh9SPGg',
   ),
   LadaCar(
     name: 'Lada XRAY Cross',
@@ -63,6 +68,7 @@ List<LadaCar> ladaCars = [
       'https://avatars.mds.yandex.net/get-autoru-vos/4614399/fcf8a8c4813f278498e59a52f5f32972/1200x900n',
     ],
     price: '1.190.000',
+    videoUrl: 'https://www.youtube.com/watch?v=sl5ns4bkxkE',
   ),
   LadaCar(
     name: 'Niva Offroad',
@@ -72,6 +78,7 @@ List<LadaCar> ladaCars = [
       'https://avatars.mds.yandex.net/get-autoru-vos/11124027/43903dc9412df16af365531e8597006a/1200x900n',
     ],
     price: '1.399.000',
+    videoUrl: 'https://www.youtube.com/watch?v=T9qiLTX9IJY',
   ),
   LadaCar(
     name: 'Niva Legend Bronto',
@@ -81,6 +88,7 @@ List<LadaCar> ladaCars = [
       'https://avatars.mds.yandex.net/get-autoru-vos/5138045/089bd0f2e299ea8ce59f99cea098e511/1200x900n',
     ],
     price: '1.380.000',
+    videoUrl: 'https://www.youtube.com/watch?v=sW2YBEZanLg',
   ),
   LadaCar(
     name: 'Lada Vesta Sport',
@@ -90,5 +98,6 @@ List<LadaCar> ladaCars = [
       'https://avatars.mds.yandex.net/get-autoru-vos/11621042/44d5084f380a49c5f9c41443d53e157a/1200x900n',
     ],
     price: '1.348.000',
+    videoUrl: 'https://www.youtube.com/watch?v=UpbDZ1PA4z0',
   ),
 ];

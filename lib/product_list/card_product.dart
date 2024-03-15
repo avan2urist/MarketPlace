@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:social_network/product_list/info_lada/lada_car_info.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class CardScreen extends StatefulWidget {
   final LadaCar car;
-
+  
   const CardScreen({super.key, required this.car});
 
   @override
@@ -12,7 +13,31 @@ class CardScreen extends StatefulWidget {
 }
 
 class _CardScreenState extends State<CardScreen> {
-  int currentPage = 1;
+  int photoIndex =0;
+  late YoutubePlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(widget.car.videoUrl)!,
+      flags: const YoutubePlayerFlags(autoPlay: false),
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant CardScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.car.videoUrl != oldWidget.car.videoUrl) {
+      _controller.load(YoutubePlayer.convertUrlToId(widget.car.videoUrl)!);
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,39 +50,34 @@ class _CardScreenState extends State<CardScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(
-            height: 300, // Вы можете установить желаемую высоту изображения
-            child: Stack(
-              children: [
-                PageView.builder(
-                  itemCount: widget.car.imageUrl.length,
-                  onPageChanged: (int page) {
-                    setState(() {
-                      currentPage = page + 1;
-                    });
-                  },
-                  itemBuilder: (context, idx) {
-                    return Image.network(
-                      widget.car.imageUrl[idx],
-                      fit: BoxFit
-                          .fitWidth, // Растягиваем изображение на всю ширину
-                    );
-                  },
-                ),
-                Positioned(
-                  bottom: 10,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Text(
-                      '$currentPage/${widget.car.imageUrl.length}',
-                      style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ],
+            height: MediaQuery.of(context).size.height / 2, // Половина экрана
+            child: PageView.builder(
+              itemCount: widget.car.imageUrl.length + 1, // Add 1 for the video
+              itemBuilder: (context, index) {
+                if (index == widget.car.imageUrl.length) {
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height / 2, // Половина экрана
+                    child: YoutubePlayer(controller: _controller),
+                  );
+                } else {
+                  return Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Image.network(widget.car.imageUrl[index], fit: BoxFit.cover),
+                      Positioned(
+                        bottom: 8.0,
+                        child: Text('${index + 1}/${widget.car.imageUrl.length}',
+                            style: const TextStyle(color: Colors.white)),
+                      ),
+                    ],
+                  );
+                }
+              },
+              onPageChanged: (index) {
+                setState(() {
+                  photoIndex = index;
+                });
+              },
             ),
           ),
           Padding(
@@ -66,8 +86,7 @@ class _CardScreenState extends State<CardScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(widget.car.name,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold)),
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 10),
                 Text('Price: ${widget.car.price}'),
               ],
