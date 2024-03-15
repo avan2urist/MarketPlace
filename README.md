@@ -8,6 +8,5 @@
 
 ### card product
 
-![image](https://github.com/avan2urist/MarketPlace/assets/156675394/8513da34-94f3-4002-808d-4ce14485cf4b)
-
+![image](https://github.com/avan2urist/MarketPlace/assets/156675394/7a87ebd1-0143-476d-82be-2e6edb75fc53)
 
