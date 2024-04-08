@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:social_network/colors/colors_application.dart';
+import 'package:untitled1/colors/colors.dart';
 
 class LoginSignUpScreen extends StatefulWidget {
   const LoginSignUpScreen({super.key});
@@ -219,7 +219,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                     value: isRememberMe,
                     onChanged: (value) {
                       setState(
-                        () {
+                            () {
                           isRememberMe == false;
                         },
                       );
@@ -271,7 +271,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                         margin: const EdgeInsets.only(right: 8),
                         decoration: BoxDecoration(
                           color:
-                              isMale ? Palette.textColor2 : Colors.transparent,
+                          isMale ? Palette.textColor2 : Colors.transparent,
                           border: Border.all(
                             width: 1,
                             color: isMale
@@ -307,7 +307,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                         margin: const EdgeInsets.only(right: 8),
                         decoration: BoxDecoration(
                           color:
-                              isMale ? Colors.transparent : Palette.textColor2,
+                          isMale ? Colors.transparent : Palette.textColor2,
                           border: Border.all(
                             width: 1,
                             color: isMale
@@ -409,41 +409,41 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
           ),
           child: showShadow == false
               ? ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/to_product_list');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    padding: EdgeInsets.zero,
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/to_product_list');
+            },
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              padding: EdgeInsets.zero,
+            ),
+            child: Ink(
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Colors.orange, Colors.red],
+                  begin: Alignment.topLeft,
+                  end: Alignment.topRight,
+                ),
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    spreadRadius: 1,
+                    blurRadius: 2,
+                    offset: const Offset(0, 1),
                   ),
-                  child: Ink(
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [Colors.orange, Colors.red],
-                        begin: Alignment.topLeft,
-                        end: Alignment.topRight,
-                      ),
-                      borderRadius: BorderRadius.circular(50),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          spreadRadius: 1,
-                          blurRadius: 2,
-                          offset: const Offset(0, 1),
-                        ),
-                      ],
-                    ),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                )
+                ],
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: const Icon(
+                  Icons.arrow_forward,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          )
               : const Center(),
         ),
       ),
@@ -457,7 +457,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
       child: TextField(
         obscureText: isPassword,
         keyboardType:
-            isEmail == true ? TextInputType.emailAddress : TextInputType.text,
+        isEmail == true ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
